@@ -10,7 +10,7 @@ const app = express()
 const path = require('path')
 
 app.use(express.static(path.join(__dirname)))
-
+console.log(process.env.PORT)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(helmet())
@@ -34,4 +34,3 @@ app.use('*', (_, res, _2) => {
 })
 
 kayaPay.START_APPLICATION(app)
-
