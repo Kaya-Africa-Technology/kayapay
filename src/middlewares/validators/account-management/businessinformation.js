@@ -13,8 +13,6 @@ exports.BUSINESS_INFO = [
       req.businessDetailsId = businessDetailsId.rows[0];
     }),
 ];
-
-
 exports.NEW_BUSINESS = [
   body('name')
     .isString()
