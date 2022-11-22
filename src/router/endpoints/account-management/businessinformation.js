@@ -6,14 +6,13 @@ const businessInformationController = require('../../../controllers/account-mana
 
 businessInfoRoute.get(
   '/business-information',
-  // middleware.VERIFY_TOKEN,
-  VALIDATE.BUSINESS_INFO,
+  //  middleware.VERIFY_TOKEN,
   businessInformationController.getBusinessDetails
 )
 
 businessInfoRoute.get(
   '/business-details-id',
-  // middleware.VERIFY_TOKEN,
+   middleware.VERIFY_TOKEN,
   businessInformationController.getbusinessDetailsById
 )
 
@@ -23,15 +22,16 @@ businessInfoRoute.post(
   businessInformationController.addBusinessDetails
 )
 businessInfoRoute.put(
-  '/update-business-details',
-  // middleware.VERIFY_TOKEN,
+  '/update-business-details/:id',
+  //  middleware.VERIFY_TOKEN,
   VALIDATE.BUSINESS_UPDATE,
   businessInformationController.updateBusinessDetails
 )
-businessInfoRoute.delete(
-  '/delete-business-details',
-  // middleware.VERIFY_TOKEN,
-  businessInformationController.deleteBusinessDetails
-)
+// businessInfoRoute.delete(
+//   '/delete-business-details/:id',
+//   //  middleware.VERIFY_TOKEN,
+//   businessInformationController.deleteBusinessDetails
+// )
+
 
 module.exports = businessInfoRoute

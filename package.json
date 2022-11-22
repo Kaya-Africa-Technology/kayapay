@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "migration": "node src/models/migration.js",
     "dropTable": "node src/models/drop.js"
   },
@@ -28,8 +28,9 @@
   },
   "homepage": "https://github.com/oolushola/kayapay#readme",
   "devDependencies": {
-    "chai": "^4.3.6",
-    "mocha": "^9.2.1",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.2.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
   },

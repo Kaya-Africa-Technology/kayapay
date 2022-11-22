@@ -24,14 +24,14 @@ exports.NEW_BUSINESS = [
     .trim()
     .toLowerCase()
     .notEmpty(),
-    body("cac_no")
+    body("cacNo")
     .isString()
     .notEmpty()
     .trim()
     .toLowerCase()
     .custom(async (value, { _ }) => {
       const checkValidity = await pool.query(
-        'SELECT * FROM tbl_kp_business_info WHERE "cac_no" = $1',
+        'SELECT * FROM tbl_kp_business_info WHERE "cacNo" = $1',
         [value]
       );
       if (checkValidity.rowCount > 0) {
@@ -42,14 +42,14 @@ exports.NEW_BUSINESS = [
     .notEmpty()
     .isURL()
     .trim(),
-    body("tax_no")
+    body("taxNo")
     .isString()
     .notEmpty()
     .trim()
     .toLowerCase()
     .custom(async (value, { _ }) => {
       const checkValidity = await pool.query(
-        'SELECT * FROM tbl_kp_business_info WHERE "tax_no" = $1',
+        'SELECT * FROM tbl_kp_business_info WHERE "taxNo" = $1',
         [value]
       );
       if (checkValidity.rowCount > 0) {
@@ -76,14 +76,14 @@ exports.BUSINESS_UPDATE = [
     .trim()
     .toLowerCase()
     .notEmpty(),
-    body("cac_no")
+    body("cacNo")
     .isString()
     .notEmpty()
     .trim()
     .toLowerCase()
     .custom(async (value, { req }) => {
       const checkValidity = await pool.query(
-        'SELECT * FROM tbl_kp_business_info WHERE "cac_no" = $1 AND id <> $3',
+        'SELECT * FROM tbl_kp_business_info WHERE "cacNo" = $1 AND id <> $3',
         [value, req.headers.businessDetailsId]
       );
       console.log(checkValidity.rowCount)
@@ -95,14 +95,14 @@ exports.BUSINESS_UPDATE = [
     .notEmpty()
     .isURL()
     .trim(),
-    body("tax_no")
+    body("taxNo")
     .isString()
     .notEmpty()
     .trim()
     .toLowerCase()
     .custom(async (value, { req }) => {
       const checkValidity = await pool.query(
-        'SELECT * FROM tbl_kp_business_info WHERE "tax_no" = $1 AND id <> $6',
+        'SELECT * FROM tbl_kp_business_info WHERE "taxNo" = $1 AND id <> $6',
         [value, req.headers.businessDetailsId]
       );
       console.log(checkValidity.rowCount)
