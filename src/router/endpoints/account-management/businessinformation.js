@@ -27,11 +27,5 @@ businessInfoRoute.put(
   VALIDATE.BUSINESS_UPDATE,
   businessInformationController.updateBusinessDetails
 )
-// businessInfoRoute.delete(
-//   '/delete-business-details/:id',
-//   //  middleware.VERIFY_TOKEN,
-//   businessInformationController.deleteBusinessDetails
-// )
-
 
 module.exports = businessInfoRoute
