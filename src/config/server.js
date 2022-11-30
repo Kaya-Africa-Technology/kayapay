@@ -1,7 +1,7 @@
 const { Pool } = require('pg')
 require('dotenv').config()
 
-const PORT = process.env.ENV === 'development' ? 5000 : process.env.PORT
+const PORT = process.env.ENV === 'development' ? 7000 : process.env.PORT
 
 const config = {
   user: process.env.PG_USER,

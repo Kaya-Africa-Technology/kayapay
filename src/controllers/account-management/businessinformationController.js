@@ -6,6 +6,7 @@ class businessInformationController {
   static async getBusinessDetails(_req, res) {
     try {
       const businessInformation = await pool.query('SELECT * FROM tbl_kp_business_info ORDER BY "name" ASC')
+      
       response.success(
         res, 200, 'businessInformation', businessInformation.rows
       )
@@ -19,16 +20,18 @@ class businessInformationController {
 
   static async getbusinessDetailsById(req, res) {
     try {
+      const {id} = req.params;
       const businessDetailsId = parseInt(req.params.businessDetailsId)
       pool.query('SELECT * FROM tbl_kp_business_info WHERE id = $1', [id])
       response.success(
-        res, 200, 'businessDetailsId', businessDetailsId.rows
+        res, 200, 'businessDetailsId', businessDetailsId
       )
     }
     catch (err) {
       response.error(
-        res, 500, 'internal sercer error', err.message
+        res, 500, 'internal server error', err.message
       )
+      console.log(err)
     }
   }
 
@@ -43,14 +46,17 @@ class businessInformationController {
         email,
         phone
       } = req.body
-      await pool.query('INSERT INTO tbl_kp_business_info (name,location,cacNo,website,taxNo,email,phone) VALUES($1, $2, $3, $4, $5,$6,$7)',
+      await pool.query('INSERT INTO tbl_kp_business_info (name,location, "cacNo", website, "taxNo", email, phone) VALUES($1, $2, $3, $4, $5, $6, $7);',
         [name, location, cacNo, website, taxNo, email, phone])
 
+      const info = await pool.query(`SELECT * FROM tbl_kp_business_info WHERE "email"='${email}';`);
       response.success(
-        res, 201, 'added business details', req.body
+        res, 201, 'added business details', info
       )
     }
     catch (err) {
+      console.log(err)
+      
       response.error(
         res, 500, 'internal error', err.message
       )
@@ -68,7 +74,7 @@ class businessInformationController {
         'UPDATE tbl_kp_business_info SET location = $1, phone = $2 WHERE id = $3',
         [location, phone, id])
       response.success(
-        res, 200, 'updated business info', { id: id }
+        res, 204, 'updated business info', { id: id }
       )
     }
     catch (err) {

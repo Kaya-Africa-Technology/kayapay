@@ -33,4 +33,21 @@ app.use('*', (_, res, _2) => {
   })
 })
 
+
+
+// var config = require('./_config');
+
+// PG.connect(config.PG[app.settings.env], function(err, res) {
+//   if(err) {
+//     console.log('Error connecting to the database. ' + err);
+//   } else {
+//     console.log('Connected to Database: ' + PG[app.settings.env]);
+//   }
+// });
+ 
+
+
 kayaPay.START_APPLICATION(app)
+
+module.exports = app
+
