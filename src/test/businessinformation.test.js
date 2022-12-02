@@ -88,20 +88,3 @@ it('should GET businessDetailsById',(done) =>{
           });
       });
     });
-
-    
-    // it('should suspend a Business Information by id SUSPEND',(done) => {
-    //   chai.request(app)
-    //     .get('/blobs')
-    //     .end(function(err, res){
-    //       chai.request(server)
-    //         .delete('/blob/'+res.body[0]._id)
-    //         .end(function(error, response){
-    //           response.should.have.status(200);
-    //           response.should.be.json;
-    //           response.body.should.be.a('object');
-    //           response.body.should.have.property(' SUSPEND');
-    //           done();
-    //       });
-    //     });
-    // });
