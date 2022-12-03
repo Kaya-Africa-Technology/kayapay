@@ -26,7 +26,7 @@ driverRouter.get(
 
 driverRouter.post(
   '/driver',
-  middleware.VERIFY_TOKEN,
+  // middleware.VERIFY_TOKEN,
   VALIDATE.NEW_DRIVER,
   driverController.addDriver
 )
